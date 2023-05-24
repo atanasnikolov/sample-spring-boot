@@ -54,5 +54,10 @@ pipeline {
                 sh 'docker push ${image}:${BUILD_NUMBER}'
             }
         }
+        stage('runApp'){
+            steps{
+                sh 'java -jar app.jar'
+            }
+        }
     }
 }

@@ -56,7 +56,7 @@ pipeline {
         }
         stage('runApp'){
             steps{
-                sh 'java -jar app.jar'
+                sh 'docker run -d -p 4000:8080 ${image}:${BUILD_NUMBER}'
             }
         }
     }

@@ -10,6 +10,7 @@ pipeline {
 
     environment {
         image = 'atnikolo/spring_boot'
+        dockerpass = credentials('notMyCredentials')
     }
     tools {
         gradle 'gradle'
@@ -39,6 +40,18 @@ pipeline {
             steps {
                 sh 'docker build -t ${image} .'
                 sh 'docker tag ${image} ${image}:${BUILD_NUMBER}'
+            }
+        }
+
+        stage('dockerHubLogin') {
+            steps {
+                sh 'docker login -u dockerpass_USR -p dockerpass_PASS'
+
+            }
+        }
+        stage ('dockerPush'){
+            steps{
+                sh 'docker push ${image}:${BUILD_NUMBER}'
             }
         }
     }

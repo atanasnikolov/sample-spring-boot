@@ -56,7 +56,7 @@ pipeline {
         }
         stage('runApp'){
             steps{
-                sh 'docker run -d -p 6000:8080 ${image}:${BUILD_NUMBER}'
+                sh 'docker run -d -p 7000:9080 ${image}:${BUILD_NUMBER}'
             }
         }
     }

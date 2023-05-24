@@ -1,7 +1,7 @@
 pipeline {
 
     agent {
-        label 'master'
+        label 'slave_boy'
     }
     
     triggers {

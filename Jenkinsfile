@@ -45,7 +45,7 @@ pipeline {
 
         stage('dockerHubLogin') {
             steps {
-                sh 'docker login -u dockerpass_USR -p dockerpass_PASS'
+                sh 'docker login -u $dockerpass_USR -p $dockerpass_PASS'
 
             }
         }

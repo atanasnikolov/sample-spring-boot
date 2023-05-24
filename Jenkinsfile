@@ -20,7 +20,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'cd sample-spring-boot'
                 sh './gradlew build'
             }
         }

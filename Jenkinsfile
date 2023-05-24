@@ -18,6 +18,13 @@ pipeline {
     }
 
     stages {
+
+        stage ('Clean'){
+            steps{
+                cleanWs()
+            }
+        }
+
         stage('cloneRepo') {
             steps {
                 git branch: 'main', url: 'https://github.com/atanasnikolov/sample-spring-boot.git'
@@ -49,14 +56,16 @@ pipeline {
 
             }
         }
+        
         stage ('dockerPush'){
             steps{
                 sh 'docker push ${image}:${BUILD_NUMBER}'
             }
         }
+
         stage('runApp'){
             steps{
-                sh 'docker run -d -p 7000:9080 ${image}:${BUILD_NUMBER}'
+                sh 'docker run -d -p 7000:8080 ${image}:${BUILD_NUMBER}'
             }
         }
     }

@@ -1,14 +1,13 @@
 pipeline {
 
-    agent {
-        label 'slavery'
-    }
+    agent any
     
     triggers {
         githubPush ()
     }
+
     stages {
-        stage('Clone') {
+        stage('retr') {
             steps {
                 git branch: 'main', url: 'https://github.com/atanasnikolov/sample-spring-boot.git'
             }

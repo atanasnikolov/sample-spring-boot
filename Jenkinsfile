@@ -13,7 +13,7 @@ pipeline {
     }
     tools {
         gradle 'gradle'
-        docker 'docker'
+        dockerTool 'docker'
     }
 
     stages {

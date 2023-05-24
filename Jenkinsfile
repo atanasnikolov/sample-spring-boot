@@ -1,10 +1,12 @@
 pipeline {
-    
+
     agent {
         label 'slavery'
     }
     
-
+    triggers {
+        githubPush ()
+    }
     stages {
         stage('Clone') {
             steps {

@@ -1,6 +1,8 @@
 pipeline {
 
-    agent any
+    agent {
+        label 'master'
+    }
     
     triggers {
         githubPush ()

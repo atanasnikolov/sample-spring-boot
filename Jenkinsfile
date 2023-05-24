@@ -8,10 +8,20 @@ pipeline {
         githubPush ()
     }
 
+    tools {
+        gradle 'gradle'
+    }
+
     stages {
-        stage('retr') {
+        stage('cloneRepo') {
             steps {
                 git branch: 'main', url: 'https://github.com/atanasnikolov/sample-spring-boot.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'cd sample-spring-boot'
+                sh './gradlew build'
             }
         }
     }
